@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 400,
+  "title": {"text": "Map of Annual Drink Consumption in US", "subtitle": "Filter by year by adjusting the slider"},
+  "background": "#FFF2D8",
+  "view": {"fill": "#f6f9ff"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/lmea0005/3179/main/Alcohol_Consumption_US.csv"
+  },
+    "params": [{
+    "name": "year",
+    "value": 2016,
+    "bind": {
+      "input": "range", "min": 1977, "max": 2016, "step": 1, "name": "Select the year:"
+    }
+  }],
+  "transform": [{"filter": "datum.Year === toString(year)"}, {
+    "lookup": "id",
+    "from": {
+      "data": {
+        "url": "https://raw.githubusercontent.com/lmea0005/3179/main/us-10m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "states"
+        }
+      },
+      "key": "id"
+    },
+    "as": "geo"
+  }],
+  "projection": {
+    "type": "albersUsa"
+  },
+  "mark": "geoshape",
+
+  "encoding": {
+  "shape": {
+    "field": "geo",
+    "type": "geojson"
+  },
+  "color": {
+    "field": "All beverages (Per capita consumption)",
+    "type": "quantitative",
+    "legend": {"title": "Drinks consumed (per capita)"},
+    "scale": {"scheme": "reds"}
+  },
+  "tooltip": [{
+    "field": "State"
+  }, {"field": "All beverages (Per capita consumption)", "title": "Drinks consumed (per capita)"}]
+}}

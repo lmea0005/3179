@@ -1,0 +1,25 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/lmea0005/3179/main/Alcohol_Consumption_US.csv"},
+    "height": 350,
+    "background": "#FFF2D8",
+    "view": {"fill": "white"},
+    "title": {"text": "Alcohol Type Consumption By Percentage"},
+    "width": "container",
+    "transform": [
+      {"fold": ["Wine (Per capita consumption)", "Spirits (Per capita consumption)", "Beer (Per capita consumption)"], "as": ["key", "value"]}
+    ],
+    "mark": {"type": "bar", "tooltip": true},
+    "encoding": {
+      "y": {
+        "aggregate": "sum", "field": "value",
+        "title": "Percentage of Total Drink Consumption",
+        "stack":  "normalize",
+        "axis": {"format": ".0%"}
+      },
+      "color": {
+        "field": "key", "title": "Alcohol Type", "scale": {"range": ["darkblue", "green", "darkorange"]}
+      },
+      "x": {"field": "Year", "type": "ordinal"}    
+    }
+  }

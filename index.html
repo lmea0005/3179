@@ -1,25 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <script src="vega_lite_vis.js"></script>
+    <script src="js/rank.js"></script>
+    <script src="js/rank_last.js"></script>
+    <script src="js/line.js"></script>
+    <script src="js/scatter.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/dot.js"></script>
+    <script src="js/stack.js"></script>
 
-    <title>First vega-lite graph </title>
-</head>
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
 
-<body>
-    <h1>First vega-lite graph</h1>
+    <title>First vega-lite graph</title>
+  </head>
 
-    <div id="bar_chart">
+  <body style="margin: 0">
+    <div class="background">
+      <div class="header">
+        <h1 class="heading">
+          CONSUMPTION of ALCOHOL in the UNITED STATES <i>(1977-2016)</i>
+        </h1>
+        <p class="subtitle">
+          Alcohol was introduced to America as early as the
+          <b>early 1600s</b> when settlers from England brought supplies of
+          beer. Its first brewery was constructed in New Amsterdam, which would
+          later <b>become known as New York City</b>. George Washington himself,
+          the USA's first President, wrote a recipe titled
+          <b>"To make Small Beer"</b>. Beer continues to have a lasting impact
+          on the country's society, and we will analyse the data trends on its
+          consumption from 1977 to 2016.
+          <b>Please note one drink equates to one gallon.</b>
+        </p>
+      </div>
+
+      <div class="section">
+        <h1 class="heading2">State Alcohol Consumption</h1>
+
+        <div class="hcontainer">
+          <div id="rank_chart" class="rank_chart"></div>
+
+          <p class="subtitle2">
+            One of <b>four states with no sales tax</b>, New Hampshire has
+            always had one of the highest alcohol "consumptions" (in reality, it
+            should be sales) in the states. From 1977 it rose from the
+            <b>3rd highest alcohol consumption to the 1st place in 2016.</b>
+            <br /><br />
+            Between 1918 and 1933, Alaska held in place a <b>'bone dry law'</b>,
+            prohibiting the manufacture and sale of alcohol. Though the law is
+            now out of effect, this hasn't prevented it from being one of the
+            country's highest alcohol consumers, where it has steadily remained
+            in the top 10 consumers from 1977 to 2016.
+          </p>
+        </div>
+        <div class="hcontainer">
+          <p class="subtitle2">
+            Utah's position as the lowest or second-lowest rank has cemented
+            itself as the state with the lowest alcohol consumer amongst all the
+            United States. It owes this position to decades of strict alcohol
+            laws as well as other factors, such as that a substantial proportion
+            of the state's population is Mormon, a religion which forbids
+            alcohol consumption.
+          </p>
+          <div id="rank_last_chart" class="rank_chart"></div>
+        </div>
+        <div id="dot_chart" class="main_chart"></div>
+        <div class="hcontainer">
+          <p class="subtitle3">
+            The above chart shows state comparisons of alcohol consumption
+            between 1977 and 2016, ignoring the years in between. Through this,
+            it displays very simply a state's progression and its difference
+            from then and now.
+            <br /><br />
+            Nevada has had the most dramatic drop in alcohol consumption,
+            reducing its consumption by 2.86 from 1977 to 2016. Though not as
+            dramatic as a progression, Delaware is one of the few states with an
+            rise in alcohol consumption, rising 0.86 from 1977 to 2016.
+          </p>
+          <p class="subtitle3">
+            The below map shows alcohol consumption by state between 1977 and
+            2016. Through this, we can see whether alcohol consumption is
+            correlated to regional differences (e.g. east-coast versus
+            west-coast), as well as identify outliers across regions (such as
+            Nevada and Utah).
+            <br /><br />
+            The map is considerably lighter in the earliest years, but this is
+            due to the max drinks consumed (per capita) affecting the legend,
+            causing the majority of states to lighten in saturation.
+          </p>
+        </div>
+        <div id="map_chart" class="main_chart"></div>
+      </div>
+
+      <div class="section">
+        <h1 class="heading2">Nation-wide Alcohol Consumption</h1>
+
+        <div id="line_chart" class="main_chart"></div>
+        <div class="hcontainer">
+          <div id="scatter_chart" class="scatter_chart"></div>
+          <p class="subtitle2">
+            In the chart above we are able to identify that the most popular
+            alcoholic beverage of consumption is beer, followed by spirits, then
+            lastly wine. Though the gap between beer and spirits is not too
+            small in 2016 (1.15 versus 0.93), beer has always had a history as
+            the most popular beverage. The intermediate years between 1977 and
+            2016 show a much wider gap between beer and the other alcohol types.
+            It is interesting to see that throughout the years, the ranking of
+            these alcohol types have never changed.
+            <br /><br />
+            On the Alcohol Consumption Scatterplot, we see that the outliers in
+            terms of state consumption are Nevada, District of Columbia, and New
+            Hampshire (with exceptionally higher alcohol consumptions) and Utah
+            (with exceptionally lower alcohol consumption). The black line
+            represents the average across all states.
+          </p>
+        </div>
+        <div id="stack_chart" class="main_chart"></div>
+
+        <div class="hcontainer">
+          <p class="subtitle3">
+            The Alcohol Type Consumption by Percentage chart shows once again
+            how dominant beer is as a preference for alcohol consumption. It has
+            taken up more than half the market share across a majority of the
+            years between 1977 and 2016.
+          </p>
+          <p class="subtitle3">
+            A brief insight into the USA's alcohol consumption shows states have
+            vastly different attitudes towards drinking. Many factors influence
+            these attitudes and statistics, whether it be strict alcohol laws
+            such as in Utah, or lax sales tax such as in New Hampshire. Despite
+            being a united country, there is certainly a cultural divide in
+            America's states, identifiable in alcohol consumption.
+          </p>
+        </div>
+      </div>
+      <p class="subtitle">
+        This work is licensed under a creative commons attribution 4.0
+        international license.
+      </p>
     </div>
-</body>
-
+  </body>
 </html>

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Drag the sliders to highlight points.",
+  "data": {"url": "https://raw.githubusercontent.com/lmea0005/3179/main/Alcohol_Consumption_US.csv"},
+  "transform": [{"calculate": "year(datum.Year)", "as": "Year"}],
+  "title": {"text": "Alcohol Consumption Scatterplot", "subtitle": "Drag and pinch chart to move and zoom"},
+  "width": "container",
+  "height": 400,
+  "background": "#FFF2D8",
+  "view": {"fill": "white"},
+  "layer": [{
+    "params": [{
+      "name": "state",
+      "select": {"type": "point", "fields": ["State"]},
+      "bind": {
+        "State": {"input": "select", "name": "Select state:", "options": [null, "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]}
+      }
+    }],
+    "mark": "circle",
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal"},
+      "y": {"field": "All beverages (Per capita consumption)", "type": "quantitative", "scale": {"domain": [1, 6.5]}},
+      "color": {
+        "condition": {"param": "state", "field": "State", "type": "nominal"},
+        "value": "grey"
+      }
+    }
+  }, {
+    "transform": [{"filter": {"param": "state"}}],
+    "params": [{
+    "name": "grid",
+    "select": "interval",
+    "bind": "scales"
+  }],
+    "mark": "circle",
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal"},
+      "y": {"field": "All beverages (Per capita consumption)", "type": "quantitative", "scale": {"domain": [1, 6.5]}},
+      "color": {"field": "State", "type": "nominal"},
+      "size": {"value": 110},
+      "tooltip": [
+        {"field": "State", "title": "State"},
+        {"field": "Year", "title": "Year"},
+        {"field": "All beverages (Per capita consumption)", "title": "Drinks consumed (per capita)"}
+      ]
+    }
+  },
+  {
+    "mark": { "type": "line" },
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal"},
+      "y": {"field": "All beverages (Per capita consumption)", "aggregate": "average", "type": "quantitative", "title": "Drinks consumed (per capita)", "scale": {"domain": [1, 6.5]}},
+      "color": {"value": "black"},
+      "size": {"value": 5},
+      "tooltip": [{"field": "Year"},{"field": "All beverages (Per capita consumption)", "aggregate": "average", "title": "Average drinks consumed (per capita)", "format": ".2f"}]
+    }
+  }],
+  "config": { "legend": { "disable": true }}
+}

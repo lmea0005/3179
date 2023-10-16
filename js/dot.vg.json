@@ -1,0 +1,86 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/lmea0005/3179/main/Alcohol_Consumption_US.csv"},
+    "width": "container",
+    "height": 400,
+    "background": "#FFF2D8",
+    "view": {"fill": "white"},
+    "title": {"text": "State Consumption Comparison in 1977 to 2016", "subtitle": "Drag and pinch chart to move and zoom"},
+    "transform": [
+      {
+        "filter": {
+          "field": "Year",
+          "oneOf": [1977, 2016]
+        }
+      }
+    ],
+    "encoding": {
+      "y": {
+        "field": "All beverages (Per capita consumption)",
+        "type": "quantitative",
+        "title": "Per capita drink consumption",
+        "scale": {"domain": [1, 7]}
+      },
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "title": "State",
+        "axis": {
+          "offset": 5,
+          "ticks": false,
+          "domain": false
+        }
+      },
+      "tooltip": [{"field": "State"}, {"field": "Year"}, {"field": "All beverages (Per capita consumption)", "title": "Per capita drink consumption"}]
+    },
+    "layer": [
+      {
+        "mark": "line",
+        "encoding": {
+          "detail": {
+            "field": "State",
+            "type": "nominal"
+          },
+          "color": {"value": "grey"}
+        }
+      },
+      {
+        "params": [{
+          "name": "grid",
+          "select": "interval",
+          "bind": "scales"
+        }
+      ],
+        "mark": {
+          "type": "point",
+          "filled": true
+        },
+        "encoding": {
+          "color": {
+            "field": "Year",
+            "type": "ordinal",
+            "scale": {
+              "domain": [1977, 2016],
+              "range": ["green", "cyan"]
+            },
+            "title": "Year"
+          },
+          "size": {"value": 100},
+          "opacity": {"value": 1}
+        }
+      }, {
+        "mark": {"type": "text", "text": "Nevada has reduced its per capita consumption by 2.86 from 1977 to 2016", "fontSize": 13},
+        "encoding": {
+          "x": {"datum": "Nevada"},
+          "y": {"datum": 6.5}
+        }
+      }, {
+        "mark": {"type": "text", "text": "Delaware's consumption has risen by 0.86 from 1977 to 2016", "fontSize": 10, "align": "left"},
+        "encoding": {
+          "x": {"datum": "District of Columbia"},
+          "y": {"datum": 3.5}
+        }
+      }
+    ]
+  }
+  

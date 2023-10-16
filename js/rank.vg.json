@@ -1,0 +1,55 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "States with the Highest Alcohol Consumption By Rank",
+      "frame": "bounds",
+      "subtitle": "Click on legends to filter by state"
+    },
+    "background": "#FFF2D8",
+    "view": {"fill": "white"},
+    "width": "container",
+    "height": 300,
+    "data": {
+      "url": "https://raw.githubusercontent.com/lmea0005/3179/main/Alcohol_Consumption_US.csv"
+    },
+    "params": [{
+    "name": "state",
+    "select": {"type": "point", "fields": ["State"]},
+    "bind": "legend"
+    }],
+    "transform": [{
+      "sort": [
+        {"field": "All beverages (Per capita consumption)", "order": "descending"},
+        {"field": "State", "order": "descending"}
+      ],
+      "window": [{
+        "op": "rank",
+        "as": "rank"
+      }],
+      "groupby": ["Year"]
+    }, 
+    {"filter": "datum.Year == 1977 || datum.Year % 4 === 0"},
+    {"filter": "datum.rank <= 10"}
+    ],
+    "mark": {"type": "line", "orient": "vertical", 
+      "point": {
+          "filled": false,
+          "fill": "white"
+      }},
+    "encoding": {
+      "x": {"field": "Year", "type": "ordinal", "title": "Year"},
+      "y": {"field": "rank", "type": "ordinal", "title": "Alcohol Consumption (per capita) Rank"},
+      "color": {
+        "field": "State", "type": "nominal"
+      },
+      "text": {"field": "rank", "type": "ordinal"},
+      "tooltip": [
+        {"field": "State", "type": "nominal"},
+        {"field": "Year", "type": "ordinal"}
+      ],
+      "opacity": {
+        "condition": {"param": "state", "value": 1},
+        "value": 0.2
+      }
+    }
+  }

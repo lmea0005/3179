@@ -1,0 +1,116 @@
+.header {
+    padding: 30px;
+    padding-left: 200px;
+    padding-right: 200px;
+    background-color: #EAD7BB;
+}
+
+.heading {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 50px;
+    background-color: #BCA37F;
+    color: #113946;
+    border-radius: 20px;
+    box-shadow: 10px 10px;
+}
+
+.heading2 {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-size: 35px;
+    background-color: #BCA37F;
+    color: #113946;
+    border-radius: 20px;
+    box-shadow: 10px 10px;
+}
+
+.subtitle {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    margin: 20px 100px;
+    padding: 20px 50px;
+    border-radius: 0px;
+    vertical-align: middle;
+    background-color: #BCA37F;
+    color: #113946;
+    box-shadow: 5px 5px;
+}
+
+.subtitle2 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    margin: 20px 0px;
+    padding: 20px 20px;
+    width: 40%;
+    border-radius: 0px;
+    vertical-align: middle;
+    background-color: #BCA37F;
+    color: #113946;
+    box-shadow: 5px 5px;
+}
+
+.subtitle3 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 18px;
+    margin: 20px 20px;
+    padding: 20px 20px;
+    width: 50%;
+    border-radius: 0px;
+    vertical-align: middle;
+    background-color: #BCA37F;
+    color: #113946;
+    box-shadow: 5px 5px;
+}
+
+.background {
+    background-color: #BCA37F;
+    background-image: url("../images/seamless.png");
+    background-size: 20%;
+}
+
+.section {
+    padding: 25px 50px;
+    margin: 20px 120px;
+    border-radius: 20px;
+    color: #113946;
+    box-shadow: 10px 10px;
+    background-color: #FFF2D8;
+}
+
+.section2 {
+    padding: 25px 50px;
+    margin: 20px 120px 0px 120px;
+    border-radius: 20px;
+    color: #113946;
+    box-shadow: 10px 10px;
+    background-color: #FFF2D8;
+}
+
+.rank_chart {
+    margin: 20px;
+    justify-content: center;
+    width: 60%;
+}
+
+.scatter_chart {
+    margin: 20px 0px;
+    padding: 0px;
+    justify-content: center;
+    width: 60%;
+}
+
+.main_chart {
+    margin: 20px;
+    width: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.hcontainer {
+    width: 100%;
+    display: flex;
+}
