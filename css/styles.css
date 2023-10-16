@@ -98,6 +98,7 @@
 }
 
 .scatter_chart {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 20px 0px;
     padding: 0px;
     justify-content: center;
